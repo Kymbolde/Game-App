@@ -5,11 +5,13 @@
 	<title>Game</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
-<body>
+<body ng-controller="homeCtrl">
 
 
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
+
+<!-- gooey menu -->
 <nav class="menu">
   <input type="checkbox" href="#" class="menu-open" name="menu-open" id="menu-open"/>
   <label class="menu-open-button" for="menu-open">
@@ -18,18 +20,17 @@
   </label>
   
   
-  <a href="#" class="menu-item"> <i class="fa fa-level-up" aria-hidden="true"></i>
-
-
-  <a href="#" class="menu-item"> <i class="fa fa-fighter-jet" aria-hidden="true"></i>
-
-  <a href="#" class="menu-item"> <i class="fa fa-child" aria-hidden="true"></i>
- </a>
+  <a ng-click="goto('jumper')" class="menu-item"> <i class="fa fa-level-up" aria-hidden="true"></i> 
+  </a>
+  <a ng-click="goto('pewpew')" class="menu-item"> <i class="fa fa-fighter-jet" aria-hidden="true"></i>
+  </a>
+  <a ng-click="goto('chickenChaser')" class="menu-item"> <i class="fa fa-child" aria-hidden="true"></i>
+  </a>
 
 </nav>
 
 
-<!-- filters -->
+<!-- filters for gooey menu -->
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
     <defs>
       <filter id="shadowed-goo">
@@ -53,6 +54,9 @@
 
 
 
+<div class="canvasContainer">
+	<ui-view></ui-view>
+</div>
 
 
 
@@ -61,9 +65,13 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.js"></script>
+<script src="http://code.jquery.com/jquery-3.1.1.js"></script>
 <script src="app.js"></script>
 <script src="mainService.js"></script>
-<script src="mainCtrl.js"></script>
+<script src="/controllers/chickenChaserCtrl.js"></script>
+<script src="/controllers/pewpewCtrl.js"></script>
+<script src="/controllers/jumperCtrl.js"></script>
+<script src="/controllers/homeCtrl.js"></script>
 
 
 

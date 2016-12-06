@@ -1,12 +1,67 @@
+/*------------------Chicken Chaser-----------------*/
+.chickenChaser {
+  color: #374861;
+}
+
+#chickenChaserCanvas {
+  background-image: url(https://raw.githubusercontent.com/lostdecade/simple_canvas_game/master/images/background.png);
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+
+/*------------------Pew Pew-----------------*/
+.pewpew {
+  color: #374861;
+}
+
+#pewpewCanvas {
+  background-image: url(http://zty.pe/media/background/stars.jpg);
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*-----------------Template------------------*/
+html {
+  height: 100%;
+  width: 100%;
+}
+
 body {
   background: url(https://images4.alphacoders.com/243/243554.png);
   background-size: 100%;
+  background-repeat: no-repeat;
   color: white;
   text-align: center;
 }
 
 a {
   color: inherit;
+}
+
+.canvasContainer {
+  margin-top: -150px;
 }
 
 h1,
@@ -22,9 +77,12 @@ h1 {
   font-size: 3em;
 }
 
+
+/*-----------------Gooey Menu------------------*/
 .menu {
   -webkit-filter: url("#shadowed-goo");
           filter: url("#shadowed-goo");
+          float: left;
 }
 
 .menu-item, .menu-open-button {
@@ -96,7 +154,6 @@ h1 {
 
 .menu {
   position: absolute;
-  left: 50%;
   margin-left: -190px;
   padding-top: 20px;
   padding-left: 190px;
@@ -104,7 +161,6 @@ h1 {
   height: 250px;
   box-sizing: border-box;
   font-size: 20px;
-  text-align: left;
 }
 
 .menu-item:hover {
