@@ -8,11 +8,11 @@
   color: #374861;
 }
 
-#pewpewCanvas {
+/*#pewpewCanvas {
   background-image: url(http://zty.pe/media/background/stars.jpg);
   background-size: 100%;
   background-repeat: no-repeat;
-}
+}*/
 
 .wrapper {
     width: 512px;
@@ -69,25 +69,6 @@
     font-size: 1.5em;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /*-----------------Template------------------*/
 html {
   height: 100%;
@@ -122,7 +103,6 @@ h4 {
 h1 {
   font-size: 3em;
 }
-
 
 /*-----------------Gooey Menu------------------*/
 .menu {

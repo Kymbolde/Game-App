@@ -18,16 +18,10 @@ var requestAnimFrame = (function(){
 // Canvas Creation
 var canvas = document.createElement("canvas");
 var ctx = canvas.getContext("2d");
-canvas.setAttribute("id", 'pewpewCanvas');
 canvas.width = 640;
-canvas.height = 850;
+canvas.height = 800;
 document.body.appendChild(canvas);
 
-var pewpewBackground = new Image();
-pewpewBackground.onload = function() {
-    startGame();
-};
-pewpewBackground.src = "img/stars.jpg";
 
 // Game Loop
 var lastTime;
@@ -43,7 +37,7 @@ function main() {
 };
 
 function init() {
-    terrainPattern = pewpewBackground;
+    terrainPattern = ctx.createPattern(resources.get('img/terrain.png'), 'repeat');
 
     document.getElementById('play-again').addEventListener('click', function() {
         reset();
@@ -78,12 +72,12 @@ var terrainPattern;
 var score = 0;
 var scoreEl = document.getElementById('score');
 
-// Speed in pixels per second
+// Speed 
 var playerSpeed = 200;
 var bulletSpeed = 500;
 var enemySpeed = 100;
 
-// Update game objects
+// Update Objects
 function update(dt) {
     gameTime += dt;
 
@@ -144,10 +138,10 @@ function handleInput(dt) {
 }
 
 function updateEntities(dt) {
-    // Update the player sprite animation
+    // Update player sprite animation
     player.sprite.update(dt);
 
-    // Update all the bullets
+    // Update bullets
     for(var i=0; i<bullets.length; i++) {
         var bullet = bullets[i];
 
@@ -158,7 +152,7 @@ function updateEntities(dt) {
             bullet.pos[0] += bulletSpeed * dt;
         }
 
-        // Remove the bullet if it goes offscreen
+        // Remove bullet if it goes offscreen
         if(bullet.pos[1] < 0 || bullet.pos[1] > canvas.height ||
            bullet.pos[0] > canvas.width) {
             bullets.splice(i, 1);
@@ -166,7 +160,7 @@ function updateEntities(dt) {
         }
     }
 
-    // Update all the enemies
+    // Update enemies
     for(var i=0; i<enemies.length; i++) {
         enemies[i].pos[0] -= enemySpeed * dt;
         enemies[i].sprite.update(dt);
@@ -178,7 +172,7 @@ function updateEntities(dt) {
         }
     }
 
-    // Update all the explosions
+    // Update explosions
     for(var i=0; i<explosions.length; i++) {
         explosions[i].sprite.update(dt);
 
@@ -207,7 +201,7 @@ function boxCollides(pos, size, pos2, size2) {
 function checkCollisions() {
     checkPlayerBounds();
     
-    // Run collision detection for all enemies and bullets
+    // Run collision detection for enemies and bullets
     for(var i=0; i<enemies.length; i++) {
         var pos = enemies[i].pos;
         var size = enemies[i].sprite.size;
@@ -217,14 +211,14 @@ function checkCollisions() {
             var size2 = bullets[j].sprite.size;
 
             if(boxCollides(pos, size, pos2, size2)) {
-                // Remove the enemy
+                // Remove enemy
                 enemies.splice(i, 1);
                 i--;
 
                 // Add score
                 score += 100;
 
-                // Add an explosion
+                // Add explosion
                 explosions.push({
                     pos: pos,
                     sprite: new Sprite('img/sprites.png',
@@ -236,7 +230,7 @@ function checkCollisions() {
                                        true)
                 });
 
-                // Remove the bullet and stop this iteration
+                // Remove bullet and stop this iteration
                 bullets.splice(j, 1);
                 break;
             }
@@ -270,7 +264,7 @@ function render() {
     ctx.fillStyle = terrainPattern;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    // Render the player if the game isn't over
+    // Render player if game isn't over
     if(!isGameOver) {
         renderEntity(player);
     }
